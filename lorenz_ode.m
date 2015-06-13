@@ -15,14 +15,14 @@
 %    Corresponding m-file:
 function f=lorenz_ode(t,X)
 
-SIGMA = 10.0; 
-R = 28.0; 
-BETA = 8.0/3;
+% SIGMA = 10.0; 
+% R = 28.0; 
+% BETA = 8.0/3;
 
 %An example given by A. Wolf for verification
-% SIGMA = 16.0; 
-% R = 45.92; 
-% BETA = 4.0;
+SIGMA = 16.0; 
+R = 45.92; 
+BETA = 4.0;
 
 x=X(1); y=X(2); z=X(3);
 %Y的三个列向量为相互正交的单位向量

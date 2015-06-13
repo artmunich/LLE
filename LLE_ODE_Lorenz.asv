@@ -66,5 +66,5 @@ i = 1:iteratetimes;
 plot(i,Lyapunov1,'r-',i,Lyapunov2,'g-',i,Lyapunov3,'b-','LineWidth',1.5)
 xlabel('\fontsize{14}Time');ylabel('\fontsize{14}Lyapunov Exponents')
 legend('\lambda_1','\lambda_2','\lambda_3','Location','Best')
+title('\fontsize{14}Lyapunov Exponents Spectrum')
 legend('boxoff')
-print(gcf,'-dpng','LES.png')
