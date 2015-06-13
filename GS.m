@@ -1,6 +1,25 @@
+%GS.m
 %Function of Gram-Schmidt process
+%
+%Input:
+%   A: nr-by-nc matrix
+%Output:
+%   Q: Reorthogonalized matrix with the same size of A;
+%   znorm: norm of each column with size nc*1
+%
 %Author: Xiawei Huai
 %Date: 2015/6/3
+%
+%As a m-by-3 matrix, we have:
+%	function A = ThreeGS(V)
+%	v1 = V(:,1);
+%	v2 = V(:,2);
+%	v3 = V(:,3);
+%	a1 = v1;
+%	a2 = v2-((a1'*v2)/(a1'*a1))*a1;
+%	a3 = v3-((a1'*v3)/(a1'*a1))*a1-((a2'*v3)/(a2'*a2))*a2;
+%	A = [a1,a2,a3];
+%-----------------------
 
 function [Q,znorm]=GS(A)
 
