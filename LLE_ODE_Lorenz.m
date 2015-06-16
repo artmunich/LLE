@@ -5,10 +5,14 @@
 %2015/5/28
 %------------------------------------------------------------
 close all;clear;clc;
-yinit = [1,1,1];
-orthmatrix = [1 0 0;
-              0 1 0;
-              0 0 1];
+
+%Spin-up to accquire post-transient initial condition
+[~,yspin] = ode45(@lorenz63,1:0.01:50,[1,1,1]);
+yinit = yspin(length(yspin),:);
+orthmatrix = eye(3);
+% orthmatrix = [1 0 0;
+%               0 1 0;
+%               0 0 1];
 y = zeros(12,1);
 y(1:3) = yinit;
 y(4:12) = orthmatrix;
@@ -19,7 +23,7 @@ tstart = 0; % 时间初始值
 %steps = 1000; % 每次演化的步数
 %iteratetimes = wholetimes/steps; % 演化的次数
 iteratetimes = 500;
-tincre = 1.2;
+tincre = 1.0;
 sum = zeros(3,1);
 
 % 初始化三个Lyapunov指数
@@ -51,6 +55,7 @@ end
 
 lyap = expo(length(expo),:);
 disp(lyap)
+%In this frame, Lyapunov exponents will be  0.9065   -0.0023  -14.5036.
 
 %   作Lyapunov指数谱图
 i = 1:iteratetimes;
@@ -58,4 +63,4 @@ plot(i,expo(:,1),'r-',i,expo(:,2),'g-',i,expo(:,3),'b-','LineWidth',1.5)
 xlabel('\fontsize{14}Time');ylabel('\fontsize{14}Lyapunov Exponents')
 legend('\lambda_1','\lambda_2','\lambda_3','Location','Best')
 legend('boxoff')
-print(gcf,'-dpng','LES.png')
+print(gcf,'-dpng','LyapExpoSpectrum.png')
